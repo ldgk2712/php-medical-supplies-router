@@ -44,6 +44,15 @@ class SupplyController
 
         Response::redirect('/supplies?created=1');
     }
+    
+    public function apiIndex(): void
+    {
+        Response::json(200, [
+            'status' => 'success',
+            'message' => 'Medical supplies data retrieved successfully',
+            'data' => $this->getSupplies()
+        ]);
+    }
 
     private function getSupplies(): array
     {

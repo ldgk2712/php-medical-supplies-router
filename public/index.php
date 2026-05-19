@@ -7,6 +7,7 @@ use App\Controllers\HealthController;
 use App\Controllers\HomeController;
 use App\Controllers\SupplyController;
 use App\Core\Router;
+use App\Controllers\AboutController;
 
 require_once dirname(__DIR__) . '/vendor/autoload.php';
 
@@ -23,13 +24,13 @@ $router = new Router();
 
 $router->get('/', [HomeController::class, 'index']);
 $router->get('/go-home', [HomeController::class, 'goHome']);
-
+$router->get('/about', [AboutController::class, 'index']);
 $router->get('/health', [HealthController::class, 'index']);
 
 $router->get('/supplies', [SupplyController::class, 'index']);
 $router->get('/supplies/create', [SupplyController::class, 'create']);
 $router->post('/supplies', [SupplyController::class, 'store']);
-
+$router->get('/api/supplies', [SupplyController::class, 'apiIndex']);
 $router->get('/login', [AuthController::class, 'login']);
 $router->post('/login', [AuthController::class, 'handleLogin']);
 $router->get('/logout', [AuthController::class, 'logout']);
